@@ -1,0 +1,6 @@
+run_id,date,data_version,model,image_encoder,text_encoder,freeze_encoder,negative_type,recall_at_10,ndcg_at_10,false_positive_bucket,note
+emr_001,2026-06-08,pseudo_v1,chinese_clip_baseline,ViT-B-32,text_transformer,true,random,0.641,0.522,general,baseline random negatives
+emr_002,2026-06-09,pseudo_v1,chinese_clip_hard_negative,ViT-B-32,text_transformer,true,mixed_hard_negative,0.658,0.541,sku_conflict,hard negatives improve difficult buckets
+emr_003,2026-06-10,pseudo_v1,openclip_probe,ViT-B-32,text_transformer,true,mixed_hard_negative,0.652,0.536,ocr_marketing_noise,feature extraction only
+emr_004,2026-06-10,pseudo_v1,dual_encoder_rerank_features,ViT-B-32,text_transformer,true,mixed_hard_negative,0.663,0.549,score_bucket,add lightweight rerank features
+

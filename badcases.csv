@@ -1,0 +1,6 @@
+case_id,error_type,category_path,title_signal,image_signal,sku_conflict,model_score,review_note,next_action
+ec_001,sku_attribute_conflict,apparel/tshirt,summer basic tee,similar white shirt,color:white_vs_beige,0.89,high score but SKU color differs,add SKU conflict hard negative
+ec_002,marketing_ocr_noise,home/storage,buy one get one,similar promo text,none,0.84,OCR marketing words dominate similarity,down-weight OCR promo tokens
+ec_003,title_generalization,apparel/top,new summer fashion,main product body differs,size:M_vs_L,0.81,generic title creates false positive,use category and subject-area bucket
+ec_004,cross_level_category,3c/accessory,phone case,similar rectangle image,model:iPhone_vs_Android,0.86,category path too coarse,add model-number parsing
+

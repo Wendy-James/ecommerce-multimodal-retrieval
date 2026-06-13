@@ -1,0 +1,4 @@
+metric,value,note
+Recall@10,0.663,toy metric mirrors experiment table field
+NDCG@10,0.549,toy metric mirrors experiment table field
+review_focus,"sku_conflict,ocr_noise,title_generalization",badcase buckets for manual review

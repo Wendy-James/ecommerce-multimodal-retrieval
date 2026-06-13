@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="360" viewBox="0 0 920 360" role="img" aria-label="Ecommerce multimodal retrieval metrics snapshot">
+  <rect width="920" height="360" fill="#f8fbff"/>
+  <rect x="24" y="24" width="872" height="312" rx="14" fill="#ffffff" stroke="#d8e6f5"/>
+  <text x="48" y="62" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#17324d">Ecommerce Multimodal Retrieval - Metrics Snapshot</text>
+  <text x="48" y="90" font-family="Arial, sans-serif" font-size="14" fill="#5c6f82">CLIP-style dual encoder · hard negatives · SKU conflict review · pseudo/anonymized product pairs</text>
+
+  <line x1="82" y1="278" x2="850" y2="278" stroke="#c9d8e8"/>
+  <line x1="82" y1="128" x2="82" y2="278" stroke="#c9d8e8"/>
+
+  <text x="98" y="304" font-family="Arial, sans-serif" font-size="13" fill="#41566b">Baseline</text>
+  <text x="262" y="304" font-family="Arial, sans-serif" font-size="13" fill="#41566b">Hard Negatives</text>
+  <text x="468" y="304" font-family="Arial, sans-serif" font-size="13" fill="#41566b">OpenCLIP Probe</text>
+  <text x="666" y="304" font-family="Arial, sans-serif" font-size="13" fill="#41566b">Rerank Features</text>
+
+  <rect x="112" y="214" width="64" height="64" rx="6" fill="#9bc5ff"/>
+  <rect x="304" y="198" width="64" height="80" rx="6" fill="#71a9f7"/>
+  <rect x="500" y="204" width="64" height="74" rx="6" fill="#4f8de5"/>
+  <rect x="704" y="193" width="64" height="85" rx="6" fill="#2066c2"/>
+
+  <text x="116" y="204" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#17324d">0.641</text>
+  <text x="308" y="188" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#17324d">0.658</text>
+  <text x="504" y="194" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#17324d">0.652</text>
+  <text x="708" y="183" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#17324d">0.663</text>
+
+  <circle cx="144" cy="237" r="5" fill="#19a974"/>
+  <circle cx="336" cy="226" r="5" fill="#19a974"/>
+  <circle cx="532" cy="229" r="5" fill="#19a974"/>
+  <circle cx="736" cy="220" r="5" fill="#19a974"/>
+  <polyline points="144,237 336,226 532,229 736,220" fill="none" stroke="#19a974" stroke-width="3"/>
+  <text x="778" y="224" font-family="Arial, sans-serif" font-size="13" fill="#147a4b">NDCG@10 0.522 -> 0.549</text>
+
+  <rect x="48" y="116" width="166" height="34" rx="17" fill="#eef5ff" stroke="#cfe0f4"/>
+  <text x="64" y="138" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#2066c2">Recall@10 0.641 -> 0.663</text>
+  <rect x="228" y="116" width="166" height="34" rx="17" fill="#eefbf5" stroke="#cceedd"/>
+  <text x="244" y="138" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#147a4b">NDCG@10 0.522 -> 0.549</text>
+  <rect x="408" y="116" width="238" height="34" rx="17" fill="#fff7e8" stroke="#f0ddb8"/>
+  <text x="424" y="138" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#8a5f13">Badcase buckets: SKU / OCR / title / category</text>
+</svg>

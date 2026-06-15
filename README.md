@@ -2,6 +2,8 @@
 
 E-commerce image-text retrieval reproduction and evidence-chain repository for algorithm internship interviews. The project documents a credible offline workflow for product title-image matching, CLIP-style dual-encoder retrieval, hard negative construction, top-k evaluation, threshold analysis, and badcase review.
 
+**This public repo is a sanitized reproduction of the workflow, not the original internship code or data.** The internship-side work used an internal offline review/evaluation protocol; this repository uses the same field design, retrieval chain, metric style, and badcase taxonomy with pseudo/anonymized samples so the method can be inspected publicly.
+
 No private merchant, product, or platform data is included. The repository uses pseudo schemas and anonymized examples.
 
 ## Project Positioning
@@ -25,6 +27,12 @@ No private merchant, product, or platform data is included. The repository uses 
 | Recall@10 / NDCG@10 evaluation | `experiments.csv`, `outputs/metrics.csv`, `scripts/evaluate_retrieval.py` |
 | Interview-safe boundary | `docs/experiment_log.md`, `docs/interview_qa.md` |
 | Public evidence boundary | `docs/dev_log.md`, `tests/` |
+
+## Data Boundary
+
+If asked whether the resume-side 8000 title-image pairs and this GitHub repo are the same dataset, the answer is:
+
+> No. The resume describes the internship-side offline sample/review protocol, which cannot be published. This GitHub repository is a sanitized public reproduction of the same workflow: same schema style, same hard-negative logic, same Faiss-style retrieval evaluation, same metrics table format, and same SKU/OCR/title/category badcase taxonomy, but no internal merchant/product/platform data.
 
 ## Repository Structure
 

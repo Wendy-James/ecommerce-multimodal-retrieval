@@ -4,6 +4,8 @@
 
 This repository is a public evidence repo organized in **June 2026** for resume and interview review. The public commit history should not be described as the full original learning timeline.
 
+This public repo is a sanitized reproduction of the workflow, not the original internship code or data. The internship-side offline review/evaluation set cannot be published; this repo keeps the schema style, retrieval chain, metrics, and badcase taxonomy with pseudo/anonymized samples.
+
 The public version contains:
 
 - pseudo/anonymized ecommerce product pairs
@@ -47,6 +49,10 @@ or:
 Safe wording:
 
 > I organized a public evidence version in June 2026. It uses pseudo ecommerce product pairs to reproduce the image-text retrieval workflow and make hard-negative construction, metrics, and badcases inspectable.
+
+If asked whether the public GitHub data is the same as the resume-side internship sample:
+
+> No. The resume describes the internship-side offline evaluation protocol. GitHub is a sanitized public reproduction of the same field design and evaluation method, without internal merchant/product/platform data.
 
 Avoid:
 

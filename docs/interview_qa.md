@@ -2,6 +2,22 @@
 
 Safe positioning: this is an offline ecommerce multimodal retrieval evidence-chain project. It demonstrates image-text matching, hard-negative construction, threshold review, and badcase analysis. It is not a full online search/recommendation ownership claim.
 
+## 0. Is this GitHub repo the same as the internship dataset?
+
+No. The resume-side work describes an internship offline review/evaluation protocol, including about 8000 title-image pairs and a fixed validation set. That original data and code cannot be published.
+
+This public repo is a sanitized reproduction of the workflow, not the original internship code or data. It keeps the same method shape:
+
+- title-image pair schema
+- category/SKU/OCR fields
+- CLIP-style dual-encoder baseline
+- hard-negative buckets
+- Faiss-style top-k retrieval evaluation
+- Recall@10/NDCG@10 experiment table
+- SKU/OCR/title/category badcase analysis
+
+So GitHub proves that I understand and can reproduce the algorithm/evaluation workflow; it does not expose or pretend to be internal company data.
+
 ## 1. What business problem does this solve?
 
 In ecommerce search and product understanding, title-similar or image-similar products can still be wrong matches when SKU attributes conflict. For example, two shirts may look similar but differ in color, size, bundle count, or model number. A pure similarity score can create high-score false positives, so the project focuses on retrieval quality plus badcase buckets.

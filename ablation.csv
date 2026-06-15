@@ -1,0 +1,6 @@
+run_id,change,recall_at_10,ndcg_at_10,false_positive_focus,interpretation
+abl_001,random_negative_baseline,0.641,0.522,general,"Baseline dual encoder can match broad category but misses fine-grained SKU conflicts"
+abl_002,+same_category_hard_negative,0.652,0.535,same_category_diff_style,"Same-category negatives improve product-level discrimination"
+abl_003,+sku_conflict_hard_negative,0.658,0.541,sku_attribute_conflict,"SKU conflict cases improve, but false-negative risk must be reviewed"
+abl_004,+ocr_noise_bucket,0.660,0.545,marketing_ocr_noise,"Down-weighting promo OCR reduces high-score false positives"
+abl_005,+lightweight_rerank_features,0.663,0.549,score_bucket,"Title attributes, OCR tokens, category path, and image score provide the best offline balance"

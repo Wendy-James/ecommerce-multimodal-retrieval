@@ -3,4 +3,9 @@ ec_001,sku_attribute_conflict,apparel/tshirt,summer basic tee,similar white shir
 ec_002,marketing_ocr_noise,home/storage,buy one get one,similar promo text,none,0.84,OCR marketing words dominate similarity,down-weight OCR promo tokens
 ec_003,title_generalization,apparel/top,new summer fashion,main product body differs,size:M_vs_L,0.81,generic title creates false positive,use category and subject-area bucket
 ec_004,cross_level_category,3c/accessory,phone case,similar rectangle image,model:iPhone_vs_Android,0.86,category path too coarse,add model-number parsing
-
+ec_005,bundle_count_conflict,beauty/skincare,hydrating mask set,similar package image,bundle:1_vs_3,0.83,bundle count differs but title template is close,extract bundle/count attributes before thresholding
+ec_006,same_style_diff_material,apparel/coat,winter wool coat,similar long coat,material:wool_vs_polyester,0.79,visual style is close but material differs,add material-token hard negative bucket
+ec_007,model_number_conflict,3c/cable,type c fast charge cable,similar cable image,model:60w_vs_100w,0.88,model number is small but business-critical,boost numeric/model-token matching
+ec_008,background_dominance,home/decor,ceramic vase,similar room background,none,0.77,background dominates image embedding,add foreground/subject-area check
+ec_009,brand_token_mismatch,apparel/shoes,running shoes,similar side-view shoe,brand:A_vs_B,0.82,brand mismatch hidden by visual similarity,add brand-token consistency feature
+ec_010,ocr_language_noise,food/snack,imported chocolate,similar foreign text package,flavor:dark_vs_milk,0.80,foreign OCR tokens dominate package similarity,normalize OCR language and flavor attribute

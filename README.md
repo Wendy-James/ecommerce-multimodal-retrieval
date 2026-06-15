@@ -22,8 +22,8 @@ No private merchant, product, or platform data is included. The repository uses 
 |---|---|
 | Product title-image matching / similar retrieval | `data_schema.md`, `scripts/build_pseudo_pairs.py`, `outputs/product_pairs.csv` |
 | CLIP-style dual encoder baseline | `scripts/train_clip_baseline.py`, `outputs/model_meta.json`, `outputs/embeddings_preview.json` |
-| Hard negative construction | `experiments.csv`, `badcases.csv`, `docs/interview_qa.md` |
-| SKU conflict and OCR noise review | `badcases.csv`, `assets/results_summary.md` |
+| Hard negative construction | `experiments.csv`, `ablation.csv`, `badcases.csv`, `docs/interview_qa.md` |
+| SKU conflict and OCR noise review | `badcases.csv` with 10 anonymized failure buckets, `assets/results_summary.md` |
 | Recall@10 / NDCG@10 evaluation | `experiments.csv`, `outputs/metrics.csv`, `scripts/evaluate_retrieval.py` |
 | Interview-safe boundary | `docs/experiment_log.md`, `docs/interview_qa.md` |
 | Public evidence boundary | `docs/dev_log.md`, `tests/` |
@@ -41,12 +41,19 @@ If asked whether the resume-side 8000 title-image pairs and this GitHub repo are
 ├── README.md
 ├── data_schema.md
 ├── experiments.csv
+├── ablation.csv
 ├── badcases.csv
+├── Makefile
+├── run.sh
 ├── requirements.txt
 ├── scripts/
 │   ├── build_pseudo_pairs.py
 │   ├── train_clip_baseline.py
 │   └── evaluate_retrieval.py
+├── tests/
+│   ├── test_badcases.py
+│   ├── test_metrics.py
+│   └── test_pseudo_pairs.py
 └── assets/
     └── results_summary.md
 ```

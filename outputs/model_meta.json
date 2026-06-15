@@ -1,6 +1,9 @@
 {
-  "model": "toy_chinese_clip_openclip_dual_encoder",
-  "loss": "InfoNCE / cross entropy with in-batch negatives",
+  "model": "clip_style_dual_encoder",
+  "backend": "numpy_infonce",
+  "loss": "InfoNCE cross entropy with in-batch negatives",
+  "input_dim": 64,
   "embedding_dim": 32,
-  "num_products": 160
+  "num_products": 160,
+  "final_loss": 2.707143
 }

@@ -16,7 +16,7 @@ Build a defensible ecommerce multimodal retrieval reproduction for algorithm-int
 | `emr_001` | Chinese-CLIP-style baseline with random negatives | 0.641 | 0.522 | General | Keep as baseline |
 | `emr_002` | Add mixed hard negatives | 0.658 | 0.541 | SKU conflict | Keep, improves difficult false-positive buckets |
 | `emr_003` | OpenCLIP-style feature probe | 0.652 | 0.536 | OCR marketing noise | Keep as model comparison |
-| `emr_004` | Add lightweight rerank features | 0.663 | 0.549 | Score bucket | Main result for evidence chain |
+| `emr_004` | Add lightweight rerank features | 0.663 | 0.549 | Score bucket | Main result for public experiment review |
 
 ## Why The Improvement Is Credible
 

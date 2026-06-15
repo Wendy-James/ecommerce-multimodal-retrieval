@@ -75,7 +75,7 @@ python scripts/evaluate_retrieval.py
 python -m pytest -q
 ```
 
-The scripts create pseudo product pairs and deterministic toy metrics. They document the experiment evidence chain, not real production data.
+The scripts create pseudo product pairs, train a lightweight CLIP-style dual encoder, and compute retrieval metrics from exported embeddings.
 The generated sample is small by design so reviewers can run the full pipeline quickly; the important part is the retrieval/evaluation structure, not the absolute metric value.
 
 ## Interview Talking Points

@@ -1,10 +1,10 @@
 # ecommerce-multimodal-retrieval
 
-E-commerce image-text retrieval reproduction and evidence-chain repository for algorithm internship interviews. The project documents a credible offline workflow for product title-image matching, CLIP-style dual-encoder retrieval, hard negative construction, top-k evaluation, threshold analysis, and badcase review.
+E-commerce image-text retrieval reproduction for product title-image matching, CLIP-style dual-encoder retrieval, hard negative construction, top-k evaluation, threshold analysis, and badcase review.
 
-**This public repo is a sanitized reproduction of the workflow, not the original internship code or data.** The internship-side work used an internal offline review/evaluation protocol; this repository uses the same field design, retrieval chain, metric style, and badcase taxonomy with pseudo/anonymized samples so the method can be inspected publicly.
+The repository focuses on a common e-commerce retrieval problem: titles and main images may look similar while SKU attributes, variants, bundle counts, or OCR marketing text make the match wrong. The workflow is intentionally offline and inspectable: schema, retrieval scripts, metrics, threshold records, and badcase buckets are kept in the repo.
 
-No private merchant, product, or platform data is included. The repository uses pseudo schemas and anonymized examples.
+**Public data boundary:** this repo is a sanitized reproduction of the workflow, not the original internship code or data. It uses the same field design, retrieval chain, metric style, and badcase taxonomy with pseudo/anonymized samples; no private merchant, product, or platform data is included.
 
 ## Project Positioning
 
@@ -18,7 +18,7 @@ No private merchant, product, or platform data is included. The repository uses 
 
 ![metrics snapshot](assets/metrics_snapshot.svg)
 
-| Resume Claim | Repository Evidence |
+| Experiment Topic | Repository Artifact |
 |---|---|
 | Product title-image matching / similar retrieval | `data_schema.md`, `scripts/build_pseudo_pairs.py`, `outputs/product_pairs.csv` |
 | CLIP-style dual encoder baseline | `scripts/train_clip_baseline.py`, `outputs/model_meta.json`, `outputs/embeddings_preview.json` |
@@ -26,7 +26,7 @@ No private merchant, product, or platform data is included. The repository uses 
 | SKU conflict and OCR noise review | `badcases.csv` with 10 anonymized failure buckets, `assets/results_summary.md` |
 | Recall@10 / NDCG@10 evaluation | `experiments.csv`, `outputs/metrics.csv`, `scripts/evaluate_retrieval.py` |
 | Interview-safe boundary | `docs/experiment_log.md`, `docs/interview_qa.md` |
-| Public evidence boundary | `docs/dev_log.md`, `tests/` |
+| Public reproduction boundary | `docs/dev_log.md`, `tests/` |
 
 ## Data Boundary
 
@@ -76,6 +76,7 @@ python -m pytest -q
 ```
 
 The scripts create pseudo product pairs and deterministic toy metrics. They document the experiment evidence chain, not real production data.
+The generated sample is small by design so reviewers can run the full pipeline quickly; the important part is the retrieval/evaluation structure, not the absolute metric value.
 
 ## Interview Talking Points
 
@@ -89,4 +90,4 @@ The scripts create pseudo product pairs and deterministic toy metrics. They docu
 - It is not a full online product-search owner project.
 - It does not contain merchant private data or real SKU catalogs.
 - It does not claim online A/B lift.
-- It is an offline evidence-chain repo for multimodal retrieval, threshold review, and badcase discussion.
+- It is an offline reproducible workflow for multimodal retrieval, threshold review, and badcase discussion.

@@ -24,6 +24,7 @@ No private merchant, product, or platform data is included. The repository uses 
 | SKU conflict and OCR noise review | `badcases.csv`, `assets/results_summary.md` |
 | Recall@10 / NDCG@10 evaluation | `experiments.csv`, `outputs/metrics.csv`, `scripts/evaluate_retrieval.py` |
 | Interview-safe boundary | `docs/experiment_log.md`, `docs/interview_qa.md` |
+| Public evidence boundary | `docs/dev_log.md`, `tests/` |
 
 ## Repository Structure
 
@@ -44,10 +45,19 @@ No private merchant, product, or platform data is included. The repository uses 
 
 ## Quick Start
 
+Recommended:
+
+```bash
+make all
+```
+
+Equivalent manual commands:
+
 ```bash
 python scripts/build_pseudo_pairs.py
 python scripts/train_clip_baseline.py
 python scripts/evaluate_retrieval.py
+python -m pytest -q
 ```
 
 The scripts create pseudo product pairs and deterministic toy metrics. They document the experiment evidence chain, not real production data.

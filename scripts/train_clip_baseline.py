@@ -1,9 +1,8 @@
 """Train a lightweight CLIP-style dual encoder on pseudo product records.
 
-This is not a hash embedding exporter. The script builds deterministic text and
-image feature vectors from public pseudo fields, trains two linear towers with
-an InfoNCE-style in-batch contrastive loss, and exports normalized embeddings
-for retrieval evaluation.
+This script builds vocabulary and character n-gram features from public pseudo
+fields, trains two linear towers with an InfoNCE-style in-batch contrastive
+loss, and exports normalized embeddings for retrieval evaluation.
 
 When PyTorch is available, the same objective runs with torch modules. In
 minimal CPU environments, a NumPy implementation keeps `make all` runnable.
@@ -12,7 +11,6 @@ minimal CPU environments, a NumPy implementation keeps `make all` runnable.
 from __future__ import annotations
 
 import csv
-import hashlib
 import json
 from pathlib import Path
 
@@ -28,21 +26,38 @@ except Exception:  # pragma: no cover
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "outputs"
-INPUT_DIM = 64
+INPUT_DIM = 96
 EMBED_DIM = 32
 EPOCHS = 120
 LR = 0.12
 SEED = 2026
 
 
-def _hash_features(text: str, dim: int = INPUT_DIM) -> np.ndarray:
+def _tokens(text: str) -> list[str]:
+    normalized = text.replace(";", " ").replace("=", " ").replace("/", " ").replace("_", " ")
+    words = [token.lower() for token in normalized.split() if token.strip()]
+    char_grams: list[str] = []
+    compact = "".join(words)
+    for n in (2, 3):
+        char_grams.extend([f"char{n}:{compact[i:i+n]}" for i in range(max(0, len(compact) - n + 1))])
+    return words + char_grams
+
+
+def _build_vocab(texts: list[str], dim: int = INPUT_DIM) -> dict[str, int]:
+    counts: dict[str, int] = {}
+    for text in texts:
+        for token in _tokens(text):
+            counts[token] = counts.get(token, 0) + 1
+    most_common = sorted(counts.items(), key=lambda item: (-item[1], item[0]))[:dim]
+    return {token: idx for idx, (token, _) in enumerate(most_common)}
+
+
+def _vectorize(text: str, vocab: dict[str, int], dim: int = INPUT_DIM) -> np.ndarray:
     vec = np.zeros(dim, dtype="float32")
-    tokens = text.replace(";", " ").replace("=", " ").replace("/", " ").split()
-    for token in tokens or [text]:
-        digest = hashlib.sha256(token.encode("utf-8")).digest()
-        idx = int.from_bytes(digest[:4], "little") % dim
-        sign = 1.0 if digest[4] % 2 == 0 else -1.0
-        vec[idx] += sign
+    for token in _tokens(text):
+        idx = vocab.get(token)
+        if idx is not None:
+            vec[idx] += 1.0
     return vec / (np.linalg.norm(vec) + 1e-8)
 
 
@@ -62,8 +77,10 @@ def _load_products() -> tuple[list[str], np.ndarray, np.ndarray]:
                 " ".join([row["image_path_b"], row["category_path"], row["sku_attrs_b"], row["ocr_text_b"]]),
             )
     ids = sorted(products)
-    text_x = np.vstack([_hash_features(products[pid][0]) for pid in ids])
-    image_x = np.vstack([_hash_features(products[pid][1]) for pid in ids])
+    all_texts = [field for pid in ids for field in products[pid]]
+    vocab = _build_vocab(all_texts)
+    text_x = np.vstack([_vectorize(products[pid][0], vocab) for pid in ids])
+    image_x = np.vstack([_vectorize(products[pid][1], vocab) for pid in ids])
     return ids, text_x, image_x
 
 
@@ -142,6 +159,7 @@ def main() -> None:
         "model": "clip_style_dual_encoder",
         "backend": backend,
         "loss": "InfoNCE cross entropy with in-batch negatives",
+        "feature_encoder": "vocabulary_and_character_ngram_vectorizer",
         "input_dim": INPUT_DIM,
         "embedding_dim": EMBED_DIM,
         "num_products": len(product_ids),

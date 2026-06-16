@@ -2,8 +2,9 @@
   "model": "clip_style_dual_encoder",
   "backend": "numpy_infonce",
   "loss": "InfoNCE cross entropy with in-batch negatives",
-  "input_dim": 64,
+  "feature_encoder": "vocabulary_and_character_ngram_vectorizer",
+  "input_dim": 96,
   "embedding_dim": 32,
   "num_products": 160,
-  "final_loss": 2.707143
+  "final_loss": 3.066094
 }

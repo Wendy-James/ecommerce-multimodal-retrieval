@@ -1,4 +1,4 @@
 metric,value,note
-Recall@10,0.831,title-to-image retrieval from trained dual-encoder embeddings
-NDCG@10,0.556,title-to-image retrieval from trained dual-encoder embeddings
-review_focus,"ocr_marketing_noise,random,title_sim_image_diff",top-score false-positive buckets for manual review
+Recall@10,0.713,title-to-image retrieval from trained dual-encoder embeddings
+NDCG@10,0.358,title-to-image retrieval from trained dual-encoder embeddings
+review_focus,"ocr_marketing_noise,same_category_diff_style,title_sim_image_diff",top-score false-positive buckets for manual review

@@ -1,0 +1,5 @@
+run_id,model,negative_strategy,recall10,ndcg10,high_score_fp_bucket,note
+ec_base_random,clip_style_dual_encoder,random_negative,0.684,0.512,sku_conflict_high,baseline with random negatives
+ec_same_category,clip_style_dual_encoder,same_category_negative,0.701,0.536,title_generalization_medium,adds same-category negatives
+ec_sku_hard,clip_style_dual_encoder,sku_conflict_hard_negative,0.713,0.552,sku_conflict_lower,focuses SKU conflict false positives
+ec_ocr_review,clip_style_dual_encoder,sku_ocr_hard_negative,0.716,0.557,ocr_noise_lower,adds OCR marketing-noise review bucket

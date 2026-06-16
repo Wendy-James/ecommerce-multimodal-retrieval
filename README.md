@@ -18,6 +18,10 @@ The repository focuses on a common e-commerce retrieval problem: titles and main
 
 ![metrics snapshot](assets/metrics_snapshot.svg)
 
+## Evidence Pack
+
+For interview review, see [`evidence_pack/`](evidence_pack/). It contains project overview, data schema, metric definitions, experiment CSV, ablation CSV, badcases, run commands, boundary statement, and whiteboard notes.
+
 | Experiment Topic | Repository Artifact |
 |---|---|
 | Product title-image matching / similar retrieval | `data_schema.md`, `scripts/build_pseudo_pairs.py`, `outputs/product_pairs.csv` |

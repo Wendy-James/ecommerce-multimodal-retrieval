@@ -1,0 +1,6 @@
+ablation_id,change,expected_effect,observed_result,risk_or_failure_case
+ab_01_random_only,random negatives only,stable broad recall,high SKU false positives,too easy for model
+ab_02_same_category,add same-category negatives,reduce category-level false positives,NDCG@10 improves,may hurt near-duplicate recall
+ab_03_sku_conflict,add SKU conflict negatives,reduce high-score SKU mismatch,high-score false positives lower,false-negative risk for variant products
+ab_04_ocr_bucket,add OCR marketing noise bucket,reduce promo-word matching errors,OCR badcases easier to identify,OCR extraction noise
+ab_05_threshold_table,review thresholds by bucket,support manual review strategy,clearer precision-recall tradeoff,not an online threshold owner claim

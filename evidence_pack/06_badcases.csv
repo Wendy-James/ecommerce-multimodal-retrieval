@@ -1,0 +1,7 @@
+case_id,bucket,symptom,likely_reason,next_check
+ec_bad_001,sku_conflict,same title template but different size/model,title similarity dominates,check SKU attrs before accepting
+ec_bad_002,ocr_noise,marketing words cause high score,promo text overlaps,downweight OCR promo tokens
+ec_bad_003,same_category_different_style,similar category but different product style,category feature too coarse,add style/model attributes
+ec_bad_004,image_similar_not_same,main image composition similar,visual encoder focuses layout,inspect product subject region
+ec_bad_005,title_generalization,broad title retrieves wrong SKU,title lacks discriminative attributes,add attribute extraction
+ec_bad_006,false_negative_risk,hard negative may be acceptable substitute,variant relation ambiguous,manual review bucket

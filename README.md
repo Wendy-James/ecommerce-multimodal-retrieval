@@ -1,12 +1,45 @@
 # ecommerce-multimodal-retrieval
 
+## Background
+
 E-commerce image-text retrieval reproduction for product title-image matching, CLIP-style dual-encoder retrieval, hard negative construction, top-k evaluation, threshold analysis, and badcase review.
 
 The repository focuses on a common e-commerce retrieval problem: titles and main images may look similar while SKU attributes, variants, bundle counts, or OCR marketing text make the match wrong. The workflow is intentionally offline and inspectable: schema, retrieval scripts, metrics, threshold records, and badcase buckets are kept in the repo.
 
 **Public data boundary:** this repo is a sanitized reproduction of the workflow, not the original internship code or data. It uses the same field design, retrieval chain, metric style, and badcase taxonomy with pseudo/anonymized samples; no private merchant, product, or platform data is included.
 
-## Quick Start
+## Dataset Boundary
+
+This repository uses pseudo/anonymized data to reproduce the offline evaluation pipeline. It does not contain company data or online production code.
+
+The public samples are product title-image pairs with category, brand, SKU attributes, OCR ratio, image-subject fields, relevance labels, hard-negative buckets, and review notes.
+
+## Method
+
+- build pseudo product title-image pairs and hard-negative buckets for similar-product retrieval review
+- train a lightweight CLIP-style dual encoder on pseudo pairs and export image/text embeddings
+- run TopK retrieval evaluation with Recall@10, NDCG@10, threshold review, and high-score false-positive analysis
+- record SKU conflict, OCR noise, title-template similarity, and main-image similarity badcases
+
+## Metrics
+
+![metrics snapshot](assets/metrics_snapshot.svg)
+
+| Setup | Recall@10 | NDCG@10 | Main Review Focus |
+|---|---:|---:|---|
+| CLIP-style baseline | 0.641 | 0.522 | title-image matching baseline |
+| + hard negatives | 0.658 | 0.541 | SKU conflict and similar-title false positives |
+| + rerank features | 0.663 | 0.549 | threshold and badcase review |
+
+## Ablation
+
+The ablation table is available at [`ablation.csv`](ablation.csv). It compares baseline retrieval, hard-negative construction, and lightweight rerank features under the same pseudo schema and metric definitions.
+
+## Badcases
+
+Badcase records are available at [`badcases.csv`](badcases.csv), with review buckets for SKU attribute conflict, OCR marketing text, title-template similarity, and main-image background similarity.
+
+## How to Run
 
 Recommended:
 
@@ -25,17 +58,11 @@ python -m pytest -q
 
 The scripts create pseudo product pairs, train a lightweight CLIP-style dual encoder, compute retrieval metrics from exported embeddings, and run tests for schema, metric, and badcase assumptions. The generated sample is small by design so reviewers can inspect the full pipeline quickly.
 
-## Result Snapshot
+## What This Repo Proves
 
-![metrics snapshot](assets/metrics_snapshot.svg)
+This repo proves the offline e-commerce multimodal retrieval evidence chain: schema, pseudo pairs, CLIP-style embedding script, hard-negative construction, TopK metrics, threshold records, and badcase taxonomy are available for review.
 
-| Setup | Recall@10 | NDCG@10 | Main Review Focus |
-|---|---:|---:|---|
-| CLIP-style baseline | 0.641 | 0.522 | title-image matching baseline |
-| + hard negatives | 0.658 | 0.541 | SKU conflict and similar-title false positives |
-| + rerank features | 0.663 | 0.549 | threshold and badcase review |
-
-## Boundary
+## What It Does Not Claim
 
 - This public repo is a sanitized reproduction of the workflow, not the original internship code or data.
 - It does not contain private merchant data, real SKU catalogs, or platform review records.

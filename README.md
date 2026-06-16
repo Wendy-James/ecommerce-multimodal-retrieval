@@ -6,17 +6,49 @@ The repository focuses on a common e-commerce retrieval problem: titles and main
 
 **Public data boundary:** this repo is a sanitized reproduction of the workflow, not the original internship code or data. It uses the same field design, retrieval chain, metric style, and badcase taxonomy with pseudo/anonymized samples; no private merchant, product, or platform data is included.
 
+## Quick Start
+
+Recommended:
+
+```bash
+make all
+```
+
+Equivalent manual commands:
+
+```bash
+python scripts/build_pseudo_pairs.py
+python scripts/train_clip_baseline.py
+python scripts/evaluate_retrieval.py
+python -m pytest -q
+```
+
+The scripts create pseudo product pairs, train a lightweight CLIP-style dual encoder, compute retrieval metrics from exported embeddings, and run tests for schema, metric, and badcase assumptions. The generated sample is small by design so reviewers can inspect the full pipeline quickly.
+
+## Result Snapshot
+
+![metrics snapshot](assets/metrics_snapshot.svg)
+
+| Setup | Recall@10 | NDCG@10 | Main Review Focus |
+|---|---:|---:|---|
+| CLIP-style baseline | 0.641 | 0.522 | title-image matching baseline |
+| + hard negatives | 0.658 | 0.541 | SKU conflict and similar-title false positives |
+| + rerank features | 0.663 | 0.549 | threshold and badcase review |
+
+## Boundary
+
+- This public repo is a sanitized reproduction of the workflow, not the original internship code or data.
+- It does not contain private merchant data, real SKU catalogs, or platform review records.
+- It does not claim online ownership, production deployment, or A/B lift.
+- It is meant to show schema design, CLIP-style embedding, hard-negative construction, top-k retrieval evaluation, threshold review, and badcase analysis.
+
 ## Project Positioning
 
 - Scenario: e-commerce product image-text matching / similar product retrieval.
 - Core problem: high-score false positives caused by similar titles or similar main images but conflicting SKU attributes.
-- Baseline: Chinese-CLIP / OpenCLIP style dual encoder.
+- Baseline: CLIP-style / open-source image-text dual encoder.
 - Retrieval: vector search with top-k evaluation.
 - Metrics: Recall@10, NDCG@10, false-positive review, bucketed badcase analysis.
-
-## Evidence Snapshot
-
-![metrics snapshot](assets/metrics_snapshot.svg)
 
 ## Evidence Pack
 
@@ -32,7 +64,7 @@ For interview review, see [`evidence_pack/`](evidence_pack/). It contains projec
 | Interview-safe boundary | `docs/experiment_log.md`, `docs/interview_qa.md` |
 | Public reproduction boundary | `docs/dev_log.md`, `tests/` |
 
-## Data Boundary
+## Data Boundary Detail
 
 If asked whether the resume-side 8000 title-image pairs and this GitHub repo are the same dataset, the answer is:
 
@@ -61,26 +93,6 @@ If asked whether the resume-side 8000 title-image pairs and this GitHub repo are
 └── assets/
     └── results_summary.md
 ```
-
-## Quick Start
-
-Recommended:
-
-```bash
-make all
-```
-
-Equivalent manual commands:
-
-```bash
-python scripts/build_pseudo_pairs.py
-python scripts/train_clip_baseline.py
-python scripts/evaluate_retrieval.py
-python -m pytest -q
-```
-
-The scripts create pseudo product pairs, train a lightweight CLIP-style dual encoder, and compute retrieval metrics from exported embeddings.
-The generated sample is small by design so reviewers can run the full pipeline quickly; the important part is the retrieval/evaluation structure, not the absolute metric value.
 
 ## Interview Talking Points
 

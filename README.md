@@ -40,6 +40,7 @@ The scripts create pseudo product pairs, train a lightweight CLIP-style dual enc
 - This public repo is a sanitized reproduction of the workflow, not the original internship code or data.
 - It does not contain private merchant data, real SKU catalogs, or platform review records.
 - It does not claim online ownership, production deployment, or A/B lift.
+- The Youzan internship story should be described as offline evaluation / strategy assessment participation, not online recall ownership.
 - It is meant to show schema design, CLIP-style embedding, hard-negative construction, top-k retrieval evaluation, threshold review, and badcase analysis.
 
 ## Project Positioning

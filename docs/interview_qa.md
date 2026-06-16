@@ -2,6 +2,8 @@
 
 Safe positioning: this is an offline ecommerce multimodal retrieval evidence-chain project. It demonstrates image-text matching, hard-negative construction, threshold review, and badcase analysis. It is not a full online search/recommendation ownership claim.
 
+Hard boundary for the Youzan internship story: always say "participated in offline evaluation / strategy assessment"; never say "owned online recall", "owned online strategy", or "launched similar-product recall".
+
 ## 0. Is this GitHub repo the same as the internship dataset?
 
 No. The resume-side work describes an internship offline review/evaluation protocol, including about 8000 title-image pairs and a fixed validation set. That original data and code cannot be published.
@@ -75,4 +77,4 @@ Hard negatives force the model to separate similar but wrong products, so high-s
 
 ## 8. What is the real deliverable?
 
-The deliverable is a reproducible offline evaluation package: pseudo pair builder, CLIP-style baseline script, retrieval evaluation script, metrics CSV, badcase table, threshold/bucket notes, and interview explanation. It supports later product matching or similar-retrieval strategy evaluation, but I should not claim online ownership.
+The deliverable is a reproducible offline evaluation package: pseudo pair builder, CLIP-style baseline script, retrieval evaluation script, metrics CSV, badcase table, threshold/bucket notes, and interview explanation. It supports later product matching or similar-retrieval strategy evaluation, but I should not claim online ownership or online recall ownership.

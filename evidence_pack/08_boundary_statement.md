@@ -6,6 +6,8 @@ It uses pseudo/anonymized ecommerce examples and does not publish merchant data,
 
 The resume internship description only refers to offline evaluation, sample analysis, threshold-metric tables, hard-negative review, and badcase work that I can explain. It does not claim ownership of a full production search/recommendation system.
 
+Hard boundary: for the Youzan internship story, always say "participated in offline evaluation / strategy assessment"; never say "owned online recall", "owned online strategy", or "launched similar-product recall".
+
 What I can discuss in an interview:
 
 - field design for title-image pairs;
